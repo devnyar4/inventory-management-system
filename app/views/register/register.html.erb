@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>在庫管理システム</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  <script src="static/js/jquery.min.js"></script>
+  <script src="static/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand">在庫管理システム</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="list.html">在庫一覧</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <h2 class="pt-3 pb-2">在庫登録</h2>
+
+      <div class="mb-3">
+        <label for="id" class="form-label">商品名</label>
+        <input type="text" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="id" class="form-label">商品名</label>
+        <input type="number" class="form-control" />
+      </div>
+
+      <div class="mb-3">
+        <form class="form" action="list.html" method="post">
+          <button type='submit' class="btn btn-primary">　登録　</button>
+          <a class="btn btn-primary" href="list.html">　戻る　</a>
+        </form>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
