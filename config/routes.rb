@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "login", to: "login#index", as: "login"
   get "list", to: "list#index", as: "list"
   get "register", to: "register#index", as: "register"
+  get "update", to: "update#index", as: "update"
 
   # ユーザーIDとパスワードがポスト送信されたときに合っているか判定するルート
   post "login", to: "login#authentication"

@@ -54,6 +54,9 @@
               <th scope="row" class="align-middle"><%= item.id %></th>
               <td class="align-middle"><%= item.item_name %></td>
               <td class="align-middle"><%= item.inventory_quantity %></td>
+              <td class="align-middle">
+                <%= link_to '更新', update_path(item), class: 'btn btn-primary btn-sm' %>
+              </td>
             </tr>
           <% end %>
         </tbody>
