@@ -10,11 +10,12 @@ class LoginController < ApplicationController
     if user && user.password == params[:password]
       # ログイン成功
       session[:user_id] = user.id
-      redirect_to list_path, notice: 'ログインしました'
+      redirect_to list_path
     else
       # ログイン失敗
-      flash.now[:alert] = 'ログインIDまたはパスワードが正しくありません'
-      render :login
+      redirect_to login_path, notice: 'ログインIDまたはパスワードが正しくありません'
+      # flash.now[:notice] = 'ログインIDまたはパスワードが正しくありません'
+      # render :login
     end
   end
 
