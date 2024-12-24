@@ -15,7 +15,7 @@
     <div class="container-fluid">
       <% if current_user %>
         <p>ログイン中: <%= current_user.login_id %></p>
-        <%= link_to 'ログアウト', logout_path, method: :delete, data: { confirm: '本当にログアウトしますか？' } %>
+        <%= link_to 'ログアウト', logout_path %>
       <% end %>
       <a class="navbar-brand">在庫管理システム</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

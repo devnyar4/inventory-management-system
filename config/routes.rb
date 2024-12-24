@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   # ユーザーIDとパスワードがポスト送信されたときに合っているか判定するルート
   post "login", to: "login#authentication"
 
-  delete "logout", to: "login#destroy", as: "logout"
+  get "logout", to: "login#destroy", as: "logout"
+
 end
