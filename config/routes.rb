@@ -13,4 +13,5 @@ Rails.application.routes.draw do
 
   get "logout", to: "login#destroy", as: "logout"
 
+  resources :items, only: [:index]
 end

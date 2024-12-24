@@ -49,33 +49,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row" class="align-middle">1</th>
-            <td class="align-middle">商品A</td>
-            <td class="align-middle">1,000</td>
-            <td class="align-middle">
-              <button class="btn btn-primary btn-sm" onclick="location.href='update.html'">更新</button>
-              <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#md-del">削除</button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row" class="align-middle">1</th>
-            <td class="align-middle">商品B</td>
-            <td class="align-middle">9,999</td>
-            <td class="align-middle">
-              <button class="btn btn-primary btn-sm" onclick="location.href='update.html'">更新</button>
-              <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#md-del">削除</button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row" class="align-middle">1</th>
-            <td class="align-middle">商品C</td>
-            <td class="align-middle">2</td>
-            <td class="align-middle">
-              <button class="btn btn-primary btn-sm" onclick="location.href='update.html'">更新</button>
-              <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#md-del">削除</button>
-            </td>
-          </tr>
+          <% @items.each do |item| %>
+            <tr>
+              <th scope="row" class="align-middle"><%= item.id %></th>
+              <td class="align-middle"><%= item.item_name %></td>
+              <td class="align-middle"><%= item.inventory_quantity %></td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
 
