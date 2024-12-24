@@ -10,6 +10,8 @@ class LoginController < ApplicationController
     if user && user.password == params[:password]
       # ログイン成功
       session[:user_id] = user.id
+      session[:last_name] = user.last_name
+      session[:first_name] = user.first_name
       redirect_to list_path
     else
       # ログイン失敗
@@ -21,6 +23,8 @@ class LoginController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    session[:last_name] = nil
+    session[:first_name] = nil
     redirect_to login_path, notice: 'ログアウトしました'
   end
 end

@@ -14,7 +14,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <% if current_user %>
-        <p>ログイン中: <%= current_user.login_id %></p>
+        <p>ログイン中: <%= current_user.last_name %> <%= current_user.first_name %></p>
         <%= link_to 'ログアウト', logout_path %>
       <% end %>
       <a class="navbar-brand">在庫管理システム</a>
