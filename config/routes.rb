@@ -2,8 +2,13 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  # root "articles#index"
+  root to: "login#index"
 
-  get "test", to: "login#index"
-  get "list", to: "list#index"
+  get "login", to: "login#index", as: "login"
+  get "list", to: "list#index", as: "list"
+
+  # ユーザーIDとパスワードがポスト送信されたときに合っているか判定するルート
+  post "login", to: "login#authentication"
+
+  delete "logout", to: "login#destroy", as: "logout"
 end
