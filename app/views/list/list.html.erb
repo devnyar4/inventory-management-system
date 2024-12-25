@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <%= link_to '在庫一覧', items_path, class: 'nav-link active' %>
+          <%= link_to '在庫一覧', list_path, class: 'nav-link active' %>
         </li>
       </ul>
       <% if current_user %>
@@ -40,22 +40,21 @@
       <h2 class="pt-3 pb-2">在庫一覧</h2>
 
       <div class="mb-3">
-        <%= link_to '新規登録', register_path, class: 'btn btn-primary' %>
+        <%= link_to '新規登録', register_path, class: 'px-4 btn btn-primary' %>
       </div>
 
       <table class="table">
         <thead class="table-primary">
           <tr>
-            <th scope="col" width="15%">id</th>
-            <th scope="col" width="30%">商品名</th>
-            <th scope="col" width="30%">在庫数</th>
-            <th scope="col" width="*"></th>
+            <th scope="col" width="60%">商品名</th>
+            <th scope="col" width="10%">在庫数</th>
+            <th scope="col" width="5%"></th>
+            <th scope="col" width="5%"></th>
           </tr>
         </thead>
         <tbody>
           <% @items.each do |item| %>
             <tr>
-              <th scope="row" class="align-middle"><%= item.id %></th>
               <td class="align-middle"><%= item.item_name %></td>
               <td class="align-middle"><%= item.inventory_quantity %></td>
               <td class="align-middle">
