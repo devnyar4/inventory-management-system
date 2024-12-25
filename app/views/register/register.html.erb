@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <%= link_to '在庫一覧', items_path, class: 'nav-link active' %>
+          <%= link_to '在庫一覧', list_path, class: 'nav-link active' %>
         </li>
       </ul>
       <% if current_user %>
@@ -38,21 +38,23 @@
     <div class="container">
       <h2 class="pt-3 pb-2">在庫登録</h2>
 
-      <div class="mb-3">
-        <label for="id" class="form-label">商品名</label>
-        <input type="text" class="form-control" />
-      </div>
-      <div class="mb-3">
-        <label for="id" class="form-label">商品名</label>
-        <input type="number" class="form-control" />
-      </div>
-
-      <div class="mb-3">
-        <form class="form" action="list.html" method="post">
-          <button type='submit' class="btn btn-primary">　登録　</button>
-          <a class="btn btn-primary" href="list.html">　戻る　</a>
-        </form>
-      </div>
+      <%= form_with model: @item, url: item_register_path, method: :post, local: true do |f| %>
+        <div class="mb-3">
+          <%= f.label :item_name, '商品名', class: 'form-label' %>
+          <%= f.text_field :item_name, class: 'form-control' %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :inventory_quantity, '在庫数', class: 'form-label' %>
+          <%= f.number_field :inventory_quantity, class: 'form-control', step: 1, min: 0, value: @item.inventory_quantity.to_i %>
+        </div>
+        <div class="mb-3">
+          <%= f.submit '登録', class: 'btn btn-primary' %>
+          <%= link_to '戻る', list_path, class: 'btn btn-secondary' %>
+        </div>
+      <% end %>
+      <% if flash[:notice] %>
+        <p style="color: red;"><%= flash[:notice] %></p>
+      <% end %>
     </div>
   </main>
 

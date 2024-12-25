@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # ユーザーIDとパスワードがポスト送信されたときに合っているか判定するルート
   post "login", to: "login#authentication"
 
+  post "register", to: "register#register", as: "item_register"
+
   get "logout", to: "login#destroy", as: "logout"
 
   resources :items, only: [:index]
