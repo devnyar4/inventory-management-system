@@ -2,19 +2,12 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root to: "login#index"
+  # ログイン関連
+  root to: "sessions#index" # ルートパスをログイン画面に設定
+  get "login", to: "sessions#index", as: :login
+  post "login", to: "sessions#create"
+  get "logout", to: "sessions#destroy", as: :logout
 
-  get "login", to: "login#index", as: "login"
-  get "list", to: "list#index", as: "list"
-  get "register", to: "register#index", as: "register"
-  get "update", to: "update#index", as: "update"
-
-  # ユーザーIDとパスワードがポスト送信されたときに合っているか判定するルート
-  post "login", to: "login#authentication"
-
-  post "register", to: "register#register", as: "item_register"
-
-  get "logout", to: "login#destroy", as: "logout"
-
-  resources :items, only: [:index]
+  # 在庫管理関連
+  resources :items, only: [:index, :new, :create, :edit, :destroy]          # 在庫一覧の表示
 end
