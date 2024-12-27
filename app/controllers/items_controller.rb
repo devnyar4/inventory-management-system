@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :require_login
-  before_action :set_item, only: [:edit, :update]
+  before_action :set_item, only: [:edit, :update, :destroy]
   
   def index
     @items = Item.all
@@ -39,6 +39,14 @@ class ItemsController < ApplicationController
     else
       flash.now[:alert] = "アイテムの更新に失敗しました。"
       render "update"
+    end
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to items_path
+    else
+      redirect_to items_path
     end
   end
 

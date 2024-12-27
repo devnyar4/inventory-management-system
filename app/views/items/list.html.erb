@@ -5,6 +5,7 @@
   <title>在庫管理システム</title>
   <meta name="description" content="">
   <meta name="author" content="">
+  <%= javascript_importmap_tags %>
 </head>
 <body>
 
@@ -60,28 +61,57 @@
               <td class="align-middle">
                 <%= link_to '更新', edit_item_path(item), class: 'btn btn-primary btn-sm' %>
               </td>
+              <td class="align-middle">
+                <%= link_to '削除', "#", 
+                class: 'btn btn-danger btn-sm', 
+                data: { bs_toggle: 'modal', bs_target: "#md-del-#{item.id}" } %>
+              </td>
+
             </tr>
           <% end %>
         </tbody>
       </table>
 
-      <div class="modal fade" id="md-del" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">確認</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>削除してよろしいですか？</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" onclick="location.href='list.html'">　OK　</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+      <% @items.each do |item| %>
+        <% if item.present? %>
+          <div class="modal fade" id="md-del-<%= item.id %>" tabindex="-1" aria-labelledby="modalLabel-<%= item.id %>" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalLabel-<%= item.id %>">確認</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>「<%= item.item_name %>」を削除してよろしいですか？</p>
+                </div>
+                <div class="modal-footer">
+                  <%= button_to 'OK', item_path(item), method: :delete, class: 'btn btn-danger' %>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        <% else %>
+          <div class="modal fade" id="md-del-error" tabindex="-1" aria-labelledby="modalLabel-error" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalLabel-error">エラー</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>指定された商品が見つかりませんでした。</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      
+      
 
     </div>
   </main>
