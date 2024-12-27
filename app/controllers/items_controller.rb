@@ -45,8 +45,12 @@ class ItemsController < ApplicationController
   private
 
   def set_item
-    @item = Item.find(params[:id])
+    @item = Item.find_by(id: params[:id])
+    if @item.nil?
+      redirect_back fallback_location: items_path
+    end
   end
+  
 
   def item_params
     params.require(:item).permit(:item_name, :inventory_quantity)
