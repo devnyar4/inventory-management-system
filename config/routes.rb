@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   get "logout", to: "sessions#destroy", as: :logout
 
   # 在庫管理関連
-  resources :items, only: [:index, :new, :create, :edit, :destroy]          # 在庫一覧の表示
+  resources :items, only: [:index, :new, :create, :edit, :update, :destroy]          # 在庫一覧の表示
 end

@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :require_login
+  before_action :set_item, only: [:edit, :update]
   
   def index
     @items = Item.all
@@ -29,7 +30,23 @@ class ItemsController < ApplicationController
     end
   end
 
+  def update
+    if item_params.values.any?(&:blank?)
+      flash.now[:alert] = "入力値が空です。"
+      render "update"
+    elsif @item.update(item_params)
+      redirect_to items_path
+    else
+      flash.now[:alert] = "アイテムの更新に失敗しました。"
+      render "update"
+    end
+  end
+
   private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:item_name, :inventory_quantity)
