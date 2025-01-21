@@ -15,27 +15,41 @@
   </nav>
 
   <main>
-    <div class="container">
-      <div style="padding: 40px 0;"></div>
-      <h1>ログイン</h1>
-      <%= form_with url: login_path, method: :post, local: true, data: { turbo: false } do |f| %>
-        <div>
-          <%= f.label :login_id, 'ログインID' %><br>
-          <%= f.text_field :login_id %>
+  <div class="container" style="max-width: 500px; margin-top: 100px;">
+    <%= form_with url: login_path, method: :post, local: true, data: { turbo: false } do |f| %>
+      <!-- ログインID -->
+      <div class="row align-items-center mb-4">
+        <div class="col-3">
+          <%= f.label :login_id, 'ログインID', class: 'form-label' %>
         </div>
-        <div>
-          <%= f.label :password, 'パスワード' %><br>
-          <%= f.password_field :password %>
+        <div class="col-9">
+          <%= f.text_field :login_id, class: 'form-control' %>
         </div>
-        <div>
-          <%= f.submit 'ログイン' %>
+      </div>
+      <!-- パスワード -->
+      <div class="row align-items-center mb-5">
+        <div class="col-3">
+          <%= f.label :password, 'パスワード', class: 'form-label' %>
         </div>
-      <% end %>
-      
-      <% if flash[:alert] %>
-        <p style="color: red;"><%= flash[:alert] %></p>
-      <% end %>
-    </div>
-  </main>
+        <div class="col-9">
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
+      </div>
+      <!-- ログインボタン -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <%= f.submit 'ログイン', class: 'btn btn-primary w-100' %>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- エラーメッセージ -->
+    <% if flash[:alert] %>
+      <div class="alert alert-danger mt-4" role="alert">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+  </div>
+</main>
 </body>
 </html>

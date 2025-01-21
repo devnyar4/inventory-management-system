@@ -41,7 +41,7 @@
       <h2 class="pt-3 pb-2">在庫一覧</h2>
 
       <div class="mb-3">
-        <%= link_to '新規登録', new_item_path, class: 'px-4 btn btn-primary' %>
+        <%= link_to '商品登録', new_item_path, class: 'px-4 btn btn-primary' %>
       </div>
 
       <table class="table">
@@ -49,8 +49,8 @@
           <tr>
             <th scope="col" width="60%">商品名</th>
             <th scope="col" width="10%">在庫数</th>
-            <th scope="col" width="5%"></th>
-            <th scope="col" width="5%"></th>
+            <th scope="col" width="5%">ー</th>
+            <th scope="col" width="5%">ー</th>
           </tr>
         </thead>
         <tbody>
@@ -59,7 +59,7 @@
               <td class="align-middle"><%= item.item_name %></td>
               <td class="align-middle"><%= item.inventory_quantity %></td>
               <td class="align-middle">
-                <%= link_to '更新', edit_item_path(item), class: 'btn btn-primary btn-sm' %>
+                <%= link_to '編集', edit_item_path(item), class: 'btn btn-primary btn-sm' %>
               </td>
               <td class="align-middle">
                 <%= link_to '削除', "#", 
