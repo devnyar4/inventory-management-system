@@ -5,7 +5,7 @@
   <title>在庫管理システム</title>
   <meta name="description" content="">
   <meta name="author" content="">
-  <%= javascript_importmap_tags %>
+  <script src="static/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 
@@ -82,7 +82,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <p>「<%= item.item_name %>」を削除してよろしいですか？</p>
+                  <p>削除してよろしいですか？</p>
                 </div>
                 <div class="modal-footer">
                   <%= button_to 'OK', item_path(item), method: :delete, class: 'btn btn-danger' %>
