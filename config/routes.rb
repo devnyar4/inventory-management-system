@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   root to: "sessions#index" # ルートパスをログイン画面に設定
   get "login", to: "sessions#index", as: :login
   post "login", to: "sessions#create"
-  get "logout", to: "sessions#destroy", as: :logout
+  delete "logout", to: "sessions#destroy", as: :logout
+  # resource :session, only: [:index, :create, :destroy]
 
   # 在庫管理関連
-  resources :items, only: [:index, :new, :create, :edit, :update, :destroy]          # 在庫一覧の表示
+  resources :items, except: [:show]        # 在庫一覧の表示
 end
