@@ -18,11 +18,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-  
-    if item_params.values.any?(&:blank?)
-      flash.now[:alert] = "入力値が空です。"
-      render "register"
-    elsif @item.save
+    if @item.save
       redirect_to items_path
     else
       flash.now[:alert] = "アイテムの登録に失敗しました。"
@@ -31,10 +27,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if item_params.values.any?(&:blank?)
-      flash.now[:alert] = "入力値が空です。"
-      render "update"
-    elsif @item.update(item_params)
+    if @item.update(item_params)
       redirect_to items_path
     else
       flash.now[:alert] = "アイテムの更新に失敗しました。"
@@ -43,22 +36,16 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.destroy
-      redirect_to items_path
-    else
-      redirect_to items_path
-    end
+    @item.destroy
+    redirect_to items_path
   end
 
   private
 
   def set_item
     @item = Item.find_by(id: params[:id])
-    if @item.nil?
-      redirect_back fallback_location: items_path
-    end
+    redirect_to items_path if @item.nil?
   end
-  
 
   def item_params
     params.require(:item).permit(:item_name, :inventory_quantity)
